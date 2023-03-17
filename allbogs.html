@@ -35,8 +35,8 @@
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2 bg-dark text-light" type="text" placeholder="Search Blogs...." />
-        <button class="btn btn-primary bg-dark text-primary" type="button">Search</button>
+        <input class="form-control me-2 bg-dark text-light" id="srchbox" type="text" placeholder="Search Blogs...." />
+        <button class="btn btn-primary bg-dark text-primary" onclick="srchevnt()" type="button">Search</button>
       </form>
     </div>
   </div>
@@ -65,6 +65,12 @@
   let useref=Math.round(Math.random() * 10);
   localStorage.setItem('refblog', useref);
   }
+
+  const srchevnt = () => {
+    // console.log($("#srchbox").val())
+  localStorage.setItem('refblog', $("#srchbox").val());
+  location.href='blog.html'
+  };
 </script>
 </body>
 </html>
