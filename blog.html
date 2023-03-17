@@ -16,9 +16,6 @@
             color: lightgreen;
             font-weight: 1000;
         }
-        #pendown{
-            border-bottom: 2px solid #8080804e;
-        }
     </style>
 </head>
 <body class="bg-black">
@@ -44,22 +41,8 @@
     </div>
   </div>
 </nav>
-<div class="container-fluid d-flex justify-content-center text-primary display-4 mt-4">
-    Write Your Blog
-</div>
-<div class="container">
-    <div id="pendown">
-        Express yourself! Pen down your ideas here...
-    </div>
-</div>
-<div class="container">
-    <label for="titeltxt" class="text-light mt-3">Title</label>
-    <input type="text" class="form-control bg-black text-light mt-3" id="titeltxt" placeholder="Please enter Title">
-</div>
-<div class="container">
-    <label for="bodycontent" class="text-light mt-3">Body</label>
-    <textarea class="form-control bg-black text-light mt-3" rows="5" placeholder="Please Enter Body" id="bodycontent"></textarea>
-    <input type="button" class="btn btn-primary text-primary bg-black mt-3" value="Submit">
-</div>
+<script>
+    console.log(localStorage.getItem('refblog'));
+</script>
 </body>
 </html>
