@@ -31,7 +31,7 @@
           <a class="nav-link" href="allbogs.html">All Blogs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Random Blog</a>
+          <a class="nav-link" onclick="randomBlog()" href="blog.html">Random Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="writeblog.html">Write Blog</a>
@@ -59,7 +59,33 @@
 <div class="container">
     <label for="bodycontent" class="text-light mt-3">Body</label>
     <textarea class="form-control bg-black text-light mt-3" rows="5" placeholder="Please Enter Body" id="bodycontent"></textarea>
-    <input type="button" class="btn btn-primary text-primary bg-black mt-3" value="Submit">
+    <input type="button" id="btnsubmit" class="btn btn-primary text-primary bg-black mt-3" value="Submit">
 </div>
+<script>
+  let blogdata;
+  $(document).ready(function () {
+    $("#btnsubmit").click(function () {
+      blogdata={
+        title : $("#titeltxt").val(),
+        body : $("#bodycontent").val()
+      };
+      $.post(`https://jsonplaceholder.typicode.com/posts`, blogdata, function(data, status, xhr) {
+        alert(`Blog Data is Written\nTitle: ${data.title}\nstatus :${status}`);
+      });
+  // console.log(blogdata);
+    });
+  });
+  // const submitblog =() =>{
+  //   let blogdata={
+  //     title : `${document.getElementById('titletxt').value}`,
+  //     body : document.getElementById('bodycontent').value
+  //   }
+  // };
+  
+  const randomBlog = () => {
+  let useref=Math.round(Math.random() * 10);
+  localStorage.setItem('refblog', useref);
+  }
+</script>
 </body>
 </html>

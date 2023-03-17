@@ -32,7 +32,7 @@
           <a class="nav-link" href="allbogs.html">All Blogs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="blog.html">Random Blog</a>
+          <a class="nav-link" onclick="randomBlog()" href="blog.html">Random Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="writeblog.html">Write Blog</a>
@@ -62,9 +62,21 @@
     $.get(`https://jsonplaceholder.typicode.com/posts/${uref}`, function (data, status, xhr) {
             document.getElementById('titlediv').innerHTML=data.title;
         });
+        if(uref<=10){
     $.get(`https://jsonplaceholder.typicode.com/users/${uref}`, function (data, status, xhr) {
             document.getElementById('authordetails').innerHTML=`Posted By: ${data.name} <br /> Contact: ${data.email} <br /> City: ${data.address.city} <br />`;
-        });
+          });
+        }
+        else{
+          $.get(`https://jsonplaceholder.typicode.com/users/${Math.round(Math.random() * 10)}`, function (data, status, xhr) {
+            document.getElementById('authordetails').innerHTML=`Posted By: ${data.name} <br /> Contact: ${data.email} <br /> City: ${data.address.city} <br />`;
+          });
+        }
+
+  const randomBlog = () => {
+  let useref=Math.round(Math.random() * 10);
+  localStorage.setItem('refblog', useref);
+  }
 </script>
 </body>
 </html>
