@@ -48,12 +48,12 @@
 <div class="container mx-5 px-5">
 <div class="container-fluid d-flex justify-content-center text-light display-6 px-3" id="titlediv">
 </div>
-<div id="imagedoc" class="container d-flex justify-content-center p-3">
-
+<div id="imagedoc" class="container d-flex justify-content-center p-3">   </div>
+<div class="container">
+  <div class="container d-flex justify-content-start p-2" id="authordetails">  </div>
 </div>
 <div class="container">
-  <div class="container d-flex justify-content-start p-2" id="authordetails">
-  </div>
+ <div class="container d-flex justify-content-start pt-3 text-light px-5" id="blogbodycontent"> </div>
 </div>
 </div>
 <script>
@@ -62,6 +62,7 @@
     $.get(`https://jsonplaceholder.typicode.com/posts/${uref}`, function (data, status, xhr) {
             document.getElementById('titlediv').innerHTML=data.title;
             document.getElementById('imagedoc').innerHTML=`<img src='https://picsum.photos/500/300' />`;
+            document.getElementById('blogbodycontent').innerHTML=data.body+data.body+data.body+data.body+data.body+data.body+data.body+data.body+data.body;
         });
         if(uref<=10){
     $.get(`https://jsonplaceholder.typicode.com/users/${uref}`, function (data, status, xhr) {
@@ -73,6 +74,14 @@
             document.getElementById('authordetails').innerHTML=`Posted By: ${data.name} <br /> Contact: ${data.email} <br /> City: ${data.address.city} <br />`;
           });
         }
+
+        $.get(`https://jsonplaceholder.typicode.com/comments/`, function (data, status, xhr) {
+        // console.log(data);
+        for (const iterator of data) {
+          if(data[iterator].postId==uref)
+          console.log(data[iterator]);          
+        }    
+        });
 
   const randomBlog = () => {
   let useref=Math.round(Math.random() * 10);
